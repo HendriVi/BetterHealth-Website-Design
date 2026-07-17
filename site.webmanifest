@@ -1,0 +1,9 @@
+{
+  "name": "BetterHealth",
+  "short_name": "BetterHealth",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ebe6d8",
+  "theme_color": "#17302d",
+  "icons": []
+}
