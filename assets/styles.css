@@ -47,8 +47,8 @@ header.nav{background:var(--porcelain);border-bottom:1px solid var(--ink);positi
   .registry span:first-child{font-size:9px}
   .registry span:last-child{font-size:9px}
   .menu-toggle{display:flex;align-items:center;justify-content:center}
-  .nav-index{position:fixed;top:120px;left:0;right:0;flex-direction:column;gap:0;background:var(--porcelain);border-bottom:1px solid var(--ink);padding:0;max-height:0;overflow:hidden;transition:max-height .3s ease;align-items:stretch}
-  .nav-index.open{max-height:600px}
+  .nav-index{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--porcelain);border-bottom:0;padding:0;max-height:0;overflow:hidden;visibility:hidden;pointer-events:none;transition:max-height .3s ease;align-items:stretch}
+  .nav-index.open{max-height:600px;visibility:visible;pointer-events:auto;border-bottom:1px solid var(--ink)}
   .nav-index a{display:flex;padding:16px 28px;border-bottom:1px solid rgba(20,32,30,.08);width:100%;align-items:center;gap:10px}
   .nav-index a i{min-width:20px}
   .nav-index a:last-child{border-bottom:none}
