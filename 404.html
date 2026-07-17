@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page not found — BetterHealth</title>
+  <script>
+    const isProjectSite = location.hostname.endsWith('.github.io');
+    const firstSegment = location.pathname.split('/').filter(Boolean)[0];
+    const home = isProjectSite && firstSegment ? `/${firstSegment}/` : '/';
+    location.replace(home);
+  </script>
+</head>
+<body><p>Returning to BetterHealth…</p></body>
+</html>
