@@ -125,6 +125,17 @@ function initializeRevealObserver() {
   elements.forEach(element => revealObserver.observe(element));
 }
 
+function fixProgramsCalloutLayout() {
+  document.querySelectorAll('.contact h2[data-en]').forEach(heading => {
+    if (!heading.dataset.en.startsWith('The first call clarifies whether BetterHealth can add value')) return;
+    heading.style.maxWidth = 'none';
+    heading.style.width = '100%';
+    heading.style.writingMode = 'horizontal-tb';
+    heading.style.wordBreak = 'normal';
+    heading.style.overflowWrap = 'normal';
+  });
+}
+
 document.addEventListener('click', event => {
   const faqButton = event.target.closest('.faq-question');
   if (faqButton) toggleFaq(faqButton);
@@ -135,5 +146,6 @@ if (consultationForm) consultationForm.addEventListener('submit', handleForm);
 window.addEventListener('resize', () => { if (window.innerWidth > 940) closeMenu(); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 
+fixProgramsCalloutLayout();
 updateLanguage();
 initializeRevealObserver();
