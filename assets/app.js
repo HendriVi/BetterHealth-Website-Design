@@ -136,6 +136,52 @@ function fixProgramsCalloutLayout() {
   });
 }
 
+function initializeAboutSection() {
+  const isHome = document.querySelector('.hero') && document.querySelector('#method');
+  const aboutHref = isHome ? '#about' : '../#about';
+
+  if (menu && !menu.querySelector('[data-about-link]')) {
+    const link = document.createElement('a');
+    link.href = aboutHref;
+    link.dataset.aboutLink = 'true';
+    link.innerHTML = '<i>05</i><span data-en="About Us" data-de="Über uns">About Us</span>';
+    const callButton = menu.querySelector('a.btn');
+    menu.insertBefore(link, callButton || languageToggle);
+    link.addEventListener('click', closeMenu);
+  }
+
+  if (!isHome || document.getElementById('about')) return;
+
+  const section = document.createElement('section');
+  section.className = 'thesis';
+  section.id = 'about';
+  section.innerHTML = `
+    <div class="wrap">
+      <span class="cap" data-en="About BetterHealth" data-de="Über BetterHealth">About BetterHealth</span>
+      <div>
+        <p data-en="BetterHealth exists to make complex psychiatric and brain-health problems more understandable—and therefore more treatable." data-de="BetterHealth wurde gegründet, um komplexe psychiatrische und gehirnbezogene Beschwerden verständlicher und dadurch gezielter behandelbar zu machen.">BetterHealth exists to make complex psychiatric and brain-health problems more understandable—and therefore more treatable.</p>
+        <p data-en="We are a physician-led medical practice in Aarau. Our work brings psychiatry, psychotherapy, applied neuroscience and relevant physiology into one clinical process. We begin with the person’s history and current difficulties, use measurement selectively, and take responsibility for turning complex findings into clear priorities and a proportionate treatment plan." data-de="Wir sind eine ärztlich geleitete medizinische Praxis in Aarau. Unsere Arbeit verbindet Psychiatrie, Psychotherapie, angewandte Neurowissenschaften und relevante Physiologie in einem klinischen Prozess. Ausgangspunkt sind die Geschichte des Menschen und seine aktuellen Beschwerden. Messungen setzen wir gezielt ein und übernehmen die Verantwortung dafür, komplexe Befunde in klare Prioritäten und einen angemessenen Behandlungsplan zu übersetzen.">We are a physician-led medical practice in Aarau. Our work brings psychiatry, psychotherapy, applied neuroscience and relevant physiology into one clinical process. We begin with the person’s history and current difficulties, use measurement selectively, and take responsibility for turning complex findings into clear priorities and a proportionate treatment plan.</p>
+        <p data-en="Our aim is not to generate more data. It is to make better clinical decisions: what matters now, what can be changed, what should be monitored and what does not need further investigation." data-de="Unser Ziel ist nicht, mehr Daten zu erzeugen. Es geht um bessere klinische Entscheidungen: Was ist jetzt relevant, was lässt sich verändern, was sollte beobachtet werden und was muss nicht weiter untersucht werden?">Our aim is not to generate more data. It is to make better clinical decisions: what matters now, what can be changed, what should be monitored and what does not need further investigation.</p>
+      </div>
+    </div>`;
+
+  const firstThesis = document.querySelector('section.thesis');
+  if (firstThesis) firstThesis.insertAdjacentElement('afterend', section);
+
+  const learnColumn = Array.from(document.querySelectorAll('.fcol')).find(column =>
+    column.querySelector('h4')?.dataset.en === 'Learn'
+  );
+  if (learnColumn && !learnColumn.querySelector('[data-about-footer]')) {
+    const footerLink = document.createElement('a');
+    footerLink.href = '#about';
+    footerLink.dataset.aboutFooter = 'true';
+    footerLink.dataset.en = 'About Us';
+    footerLink.dataset.de = 'Über uns';
+    footerLink.textContent = 'About Us';
+    learnColumn.querySelector('h4')?.insertAdjacentElement('afterend', footerLink);
+  }
+}
+
 document.addEventListener('click', event => {
   const faqButton = event.target.closest('.faq-question');
   if (faqButton) toggleFaq(faqButton);
@@ -146,6 +192,7 @@ if (consultationForm) consultationForm.addEventListener('submit', handleForm);
 window.addEventListener('resize', () => { if (window.innerWidth > 940) closeMenu(); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 
+initializeAboutSection();
 fixProgramsCalloutLayout();
 updateLanguage();
 initializeRevealObserver();
