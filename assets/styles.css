@@ -31,9 +31,9 @@ header.nav{background:var(--porcelain);border-bottom:1px solid var(--ink);positi
 .registry{max-width:var(--maxw);margin:0 auto;padding:8px 28px;display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid rgba(20,32,30,.14);flex-wrap:wrap}
 .registry span:last-child{color:var(--copper-deep)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none;cursor:pointer}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
 .brand b{font-family:var(--serif);font-weight:500;font-size:24px;letter-spacing:-.01em}
-.brand span{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.brand span{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);display:block;line-height:1.35}
 .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--slate);padding:0;width:44px;height:44px;flex-shrink:0}
 .nav-index{display:flex;gap:28px;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.02em}
 .nav-index a{text-decoration:none;color:var(--slate);transition:color .2s;cursor:pointer;display:inline-flex;gap:8px;align-items:center;background:none;border:none;font-size:12px;padding:0;white-space:nowrap}
@@ -55,6 +55,7 @@ header.nav{background:var(--porcelain);border-bottom:1px solid var(--ink);positi
   .nav-index .btn{width:auto;margin:16px 28px;margin-top:20px;padding:12px 22px}
   .lang-toggle{display:block;padding:16px 28px;border-top:1px solid rgba(20,32,30,.08);width:100%;text-align:left}
   .nav-inner{padding:12px 28px}
+  .brand{align-items:center;gap:10px}
 }
 
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease-expo),transform .6s var(--ease-expo)}
